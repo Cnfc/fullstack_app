@@ -1,18 +1,7 @@
+import { combineReducers } from 'redux';
+import survetsReducer from './survetsReducer';
 
-const initialState = {
-  books: []
-};
 
-const reducer = (state = initialState, action) => {
-
-  switch (action.type) {
-    case 'BOOKS_LOADED' :
-      return {
-        book: action.payload
-      };
-      default: 
-        return state;
-  }
-};
-
-export default reducer;
+export default combineReducers({
+  post: survetsReducer
+});
