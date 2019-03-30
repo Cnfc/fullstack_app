@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-// import Link
-import logo from '../../logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
+
+import Header from '../Header';
+import Dashboard from '../Dashboard/Dashboard';
+import SurveyNew from '../SurveyNew';
+import Landing from '../Landing';
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className='App-logo' alt="logo"></img>
-          <h2>Hi there</h2>
-        </div>
-        <p className='App-intro'> 
-          To Get started, edit<code>src/App.js</code>
-        </p>
-        <a href="http://localhost:5000/auth/google" >Sing in with Google</a>
-        <a href="http://localhost:5000/api/logout">Logout</a>
-        <a href="http://localhost:5000/api/current_user">Check</a>
+      <BrowserRouter >
+        <Route path="/" exact component={Landing} />
+        <Route path="/surveys" exact component={Dashboard} />
+        <Route path="/surveys/new" component={SurveyNew} />
+        <Route path="/" component={Landing} />
+
+      </BrowserRouter>    
       </div>
     );
   }

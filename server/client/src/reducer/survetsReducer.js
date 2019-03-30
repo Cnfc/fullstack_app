@@ -1,3 +1,4 @@
 export default (state, action) => {
-  return state + action;
+  const post = 'Hello';
+  return post;
 };

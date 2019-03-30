@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import survetsReducer from './survetsReducer';
-
+import authReducer from './authReducer';
 
 export default combineReducers({
-  post: survetsReducer
+  post: survetsReducer,
+  fire: authReducer
 });

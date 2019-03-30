@@ -21,12 +21,11 @@ const store = createStore(
 );
 
 
+
 ReactDOM.render(
     <Provider store={store}>
       <ErrorBoundry>
-        <BrowserRouter>
-         <App />
-        </BrowserRouter>
+          <App />
       </ErrorBoundry>
     </Provider>
     ,
