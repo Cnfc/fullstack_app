@@ -8,13 +8,12 @@ import SurveyNew from '../SurveyNew';
 import Landing from '../Landing';
 
 
-
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <BrowserRouter >
-        
+          <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
           <Route path="/surveys/new" component={SurveyNew} />
