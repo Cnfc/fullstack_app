@@ -5,5 +5,5 @@ import authReducer from './authReducer';
 
 export default combineReducers({
   post: survetsReducer,
-  fire: authReducer
+  auth: authReducer
 });
