@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
-import { BrowserRouter } from "react-router-dom";
 
 import ErrorBoundry from "./components/error-boundry";
 import App from "./components/App/App";
