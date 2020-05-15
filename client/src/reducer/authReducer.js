@@ -1,6 +1,6 @@
-import { FETCH_USER } from '../action/types';
+import { FETCH_USER } from "../action/types";
 
-export default function(state = null, action) {
+export default function (state = null, action) {
   console.log(action);
   switch (action.type) {
     case FETCH_USER:
