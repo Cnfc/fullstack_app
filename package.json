@@ -16,16 +16,22 @@
   },
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.692.0",
     "concurrently": "^4.1.2",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "migrate-mongoose": "^4.0.0",
     "mongoose": "^5.9.14",
     "nodemon": "^1.19.4",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "path-parser": "^6.1.0",
+    "puppeteer": "^3.3.0",
+    "redis": "^3.0.2",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {},
   "author": "",

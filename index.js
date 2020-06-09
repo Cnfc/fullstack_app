@@ -1,46 +1,54 @@
-process.env.UV_THEADPOOL_SIZE = 1;
-
 const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 const path = require("path");
-const cookieSession = require("cookie-session");
 const passport = require("passport");
-const cors = require("cors");
-const cluster = require("cluster");
-const crypto = require("crypto");
+// const keys = require("./config/keys");
+const GoogleStrategy = require("passport-google-oauth20");
+
+// require("./models/User");
+// require("./models/Blog");
+// require("./services/passport");
+
+// mongoose.Promise = global.Promise;
+// mongoose.connect(keys.mongoURI, { useMongoClient: true });
 
 // Init
 const app = express();
-app.use(cors());
 
-// Is the file being executed in master mode?
-if (cluster.isMaster) {
-  // Cause index.js to be executed *again* but in child mode
-  cluster.fork();
-  cluster.fork();
-} else {
-  // Iam a child, im going to act like a server and do nothing else
+// app.use(bodyParser.json());
+// app.use(
+//   cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey],
+//   })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-  app.get("/", (req, res) => {
-    crypto.pbkdf2("a", "b", 100000, 512, "sha512", () => {
-      res.send("Hi there");
-    });
+// passport.use(new GoogleStrategy());
+
+// require("./routes/authRoutes")(app);
+// require("./routes/blogRoutes")(app);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
   });
-
-  app.get("/fast", (req, res) => {
-    res.send("this is fast page");
-  });
-
-  if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client/build")));
-
-    app.get("/*", function (req, res) {
-      res.sendFile(path.join(__dirname, "build", "index.html"));
-    });
-  }
-
-  // Heroku or Port
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT);
 }
+
+// if (["production"].includes(process.env.NODE_ENV)) {
+//   app.use(express.static("client/build"));
+
+//   const path = require("path");
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve("client", "build", "index.html"));
+//   });
+// }
+
+// Heroku or Port
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Listening on port`, PORT);
+});
